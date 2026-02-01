@@ -116,10 +116,12 @@ html,body{
   right: -180px;
 }
 
-.quiz-questions h2{
+.quiz-questions legend{
   font-family: "Karla", sans-serif;  
-  font-size: 2rem;
-  margin-bottom: 1em;
+  font-size: 1.9rem;
+  font-weight: 500;
+  margin: 1em 0;
+  letter-spacing: -0.02em;
 }
 
 
@@ -134,24 +136,30 @@ html,body{
 }
 
 .radio-btn{
-  /* margin: 1em; */
-  font-family: "Inter", sans-serif;
   border: 1px solid #4D5B9E;
   background-color: transparent;
   padding: 0.5em 1.5em;
   border-radius: 15px;
   cursor: pointer;
-
+  text-align: center;
   transition:
     background-color 0.15s ease,
     color 0.15s ease,
     transform 0.05s ease;
 
 }
+.check-answers-btn-div > h3, .radio-btn{
+  font-family: "Inter", sans-serif;
+}
 
 .radio-group input[type="radio"]:checked + .radio-btn {
   background-color: #D6DBF5;
   border: none;
+}
+
+.un-checked input[type="radio"]:checked + .radio-btn {
+  background: inherit;
+  border: 1px solid #4D5B9E;
 }
 
 .radio-btn:hover {
@@ -169,6 +177,8 @@ html,body{
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 2.5em;
 }
 
 .check-answers-btn{
@@ -177,12 +187,43 @@ html,body{
   border: none;
   border-radius: 15px;
   padding: 1em 2em;
-  margin-top: 2.5em;
   font-family: "Inter", sans-serif;
   font-size: 1.1rem;
+  transition: transform 0.1s ease;
+}
 
+.check-answers-btn-div > h3, .check-answers-btn{
+    margin-top: 2.5em;
+}
+
+.check-answers-btn-div > h3{
+    font-size: 1.4rem;
+}
+
+.check-answers-btn:active{
+  transform: translateY(2px);
 }
 
 .radio-btn:active {
   transform: translateY(1px);
+}
+
+.check-answers-btn, .radio-group, .quiz-questions > legend{
+  z-index: 1;
+
+}
+
+.quiz-form, .check-answers-btn, .radio-group, .quiz-questions > legend{
+  position: relative;
+}
+
+.quiz .quiz-form.un-checked .radio-btn.correct{
+  background-color: #94D7A2;
+  border: none;
+}
+
+
+.quiz .quiz-form.un-checked .radio-btn.wrong{
+  background-color: #F8BCBC;
+  border: none;
 }

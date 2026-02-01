@@ -8,6 +8,7 @@ export default function App(){
   const [apiData, setapiData] = React.useState([]);
   const [questionArray, setQuestionArray] = React.useState([]);
   const [shuffledAnswerArray, setShuffledAnswerArray] = React.useState([]);
+  const [correctAnswerArray, setCorrectAnswerArray] = React.useState([]);
 
   React.useEffect(()=>{
     if (!start){
@@ -26,6 +27,10 @@ export default function App(){
       return set.question;
     });
   
+  const correctAnswerArray = apiData.map((set)=>{
+    return set.correct_answer;
+  })
+  
 
 
   const rawAnswerArray = apiData.map((set)=>{
@@ -39,6 +44,7 @@ export default function App(){
 
   setShuffledAnswerArray(shuffledAnswerArray);
   setQuestionArray(questionArray);
+  setCorrectAnswerArray(correctAnswerArray)
 
 
   }, [apiData]);
@@ -78,7 +84,7 @@ export default function App(){
   return (
     <main>
       {apiData.length && questionArray.length && shuffledAnswerArray.length  ? 
-      <Quiz questionArray={questionArray} shuffledAnswerArray={shuffledAnswerArray}/> 
+      <Quiz questionArray={questionArray} shuffledAnswerArray={shuffledAnswerArray} correctAnswerArray={correctAnswerArray} fetchAPI={fetchAPI}/> 
       : <StartScreen startQuiz={handleStartQuiz}/>}
     </main>
     
