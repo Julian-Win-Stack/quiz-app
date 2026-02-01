@@ -1,16 +1,90 @@
-# React + Vite
+# Quiz App 🧠
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Quizzical is a clean, accessible quiz application built with **React** and **Vite**.  
+It fetches trivia questions from an external API, lets users answer them, checks correctness, calculates a score, and allows replay with a fresh set of questions.
 
-Currently, two official plugins are available:
+This project focuses on **clarity, correctness, and accessibility**, not just visuals.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Dynamic quiz questions fetched from an external API
+- Multiple-choice answers with randomized order
+- Answer validation:
+  - Correct answers highlighted in green
+  - Incorrect selections highlighted in red
+- Score calculation and result summary
+- “Play again” flow that resets the quiz with new questions
+- Fully keyboard-accessible interactions
+- Screen-reader-friendly with live announcements
+- Responsive layout (desktop & mobile)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ♿ Accessibility Highlights
+
+This app intentionally follows accessibility best practices:
+
+- Semantic HTML: `form`, `fieldset`, `legend`, `label`
+- Real radio inputs (no div-based fake buttons)
+- Visible keyboard focus styles
+- Non-color indicators for correct / incorrect answers
+- Screen-reader announcements using `role="status"`
+- Decorative visuals hidden with `aria-hidden="true"`
+
+---
+
+## 🛠 Tech Stack
+
+- **React**
+- **Vite**
+- **html-entities** (for decoding HTML entities from API responses)
+- **ESLint**
+
+---
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/quiz-app.git
+cd quiz-app
+
+Install dependencies:
+npm install
+
+🚀 Running the App
+Start the development server:
+npm run dev
+
+🏗 Build for Production
+Create a production build:
+npm run build
+
+Preview the production build locally:
+npm run preview
+
+📂 Project Structure (high level)
+quiz-app/
+├── node_modules/
+├── src/
+│   ├── assets/
+│   │   └── svg blobs
+│   ├── App.jsx
+│   ├── Quiz.jsx
+│   ├── StartScreen.jsx
+│   ├── main.jsx
+│   └── index.css
+├── .gitignore
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── README.md
+
+
+📄 License
+This project is for learning and demonstration purposes.
+Feel free to fork and build on it.
