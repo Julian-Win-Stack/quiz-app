@@ -49,7 +49,7 @@ This app intentionally follows accessibility best practices:
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/quiz-app.git
+git clone https://github.com/Julian-Win-Stack/quiz-app.git
 cd quiz-app
 
 Install dependencies:
