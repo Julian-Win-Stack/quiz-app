@@ -30,8 +30,6 @@ export default function App(){
   const correctAnswerArray = apiData.map((set)=>{
     return set.correct_answer;
   })
-  
-
 
   const rawAnswerArray = apiData.map((set)=>{
       return [...set.incorrect_answers, set.correct_answer];
@@ -44,17 +42,15 @@ export default function App(){
 
   setShuffledAnswerArray(shuffledAnswerArray);
   setQuestionArray(questionArray);
-  setCorrectAnswerArray(correctAnswerArray)
+  setCorrectAnswerArray(correctAnswerArray);
 
 
   }, [apiData]);
 
 
-  
   function handleStartQuiz(){
     setStart(true);
   }
-
 
   async function fetchAPI() {
     try{
@@ -84,7 +80,11 @@ export default function App(){
   return (
     <main>
       {apiData.length && questionArray.length && shuffledAnswerArray.length  ? 
-      <Quiz questionArray={questionArray} shuffledAnswerArray={shuffledAnswerArray} correctAnswerArray={correctAnswerArray} fetchAPI={fetchAPI}/> 
+      <Quiz questionArray={questionArray} 
+          shuffledAnswerArray={shuffledAnswerArray} 
+          correctAnswerArray={correctAnswerArray} 
+          fetchAPI={fetchAPI}
+      /> 
       : <StartScreen startQuiz={handleStartQuiz}/>}
     </main>
     

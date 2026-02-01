@@ -18,6 +18,9 @@ html,body{
   width: 400px;
 }
 
+.main{
+  max-width: 900px;
+}
 
 
 /* ///////////////////////// */
@@ -30,6 +33,7 @@ html,body{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+ 
   
 }
 
@@ -97,7 +101,7 @@ html,body{
 
 .quiz{
   color: #293264;
-  width: 900px;
+  max-width: 900px;
   margin: 5em auto;
 
 }
@@ -126,6 +130,8 @@ html,body{
 
 
 .quiz-questions{
+  margin-top: 1em;
+  border: none;
   border-bottom: 1px solid #DBDEF0;
 }
 
@@ -155,6 +161,11 @@ html,body{
 .radio-group input[type="radio"]:checked + .radio-btn {
   background-color: #D6DBF5;
   border: none;
+}
+
+.radio-group input[type="radio"]:focus-visible + .radio-btn {
+  outline: 2px solid #4D5B9E;
+  outline-offset: 3px;
 }
 
 .un-checked input[type="radio"]:checked + .radio-btn {
@@ -227,3 +238,22 @@ html,body{
   background-color: #F8BCBC;
   border: none;
 }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .start-screen, .quiz{
+    padding: 1rem;
+  }
+}
+

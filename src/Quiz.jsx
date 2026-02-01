@@ -26,9 +26,11 @@ export default function Quiz({questionArray, shuffledAnswerArray, correctAnswerA
         const correctAnswer = correctAnswerArray[qIndex];
 
         const answersPart = object.answer.map((answer, aIndex)=>{
-            const statusClass = checkAnswers && Object.keys(userAnswers).length !== 0 && (answer === correctAnswer)
+            const correct = checkAnswers && Object.keys(userAnswers).length !== 0 && (answer === correctAnswer);
+            const wrong = (checkAnswers) && (Object.keys(userAnswers).length !== 0) && (userAnswer !== correctAnswer) && (answer === userAnswer);
+            const statusClass = correct
                 ? 'radio-btn correct'
-                : (checkAnswers) && (Object.keys(userAnswers).length !== 0) && (userAnswer !== correctAnswer) && (answer === userAnswer)
+                : wrong
                     ? 'radio-btn wrong'
                     : 'radio-btn';
 
@@ -38,18 +40,25 @@ export default function Quiz({questionArray, shuffledAnswerArray, correctAnswerA
                     <input type="radio" id={answerIndex} name={questionIndex} required={aIndex === 0} value={decode(answer)}/>
                     <label htmlFor={answerIndex} className={statusClass}>
                         {decode(answer)}
+                        <span className="sr-only">
+                            { correct
+                            ? 'Correct'
+                            : wrong
+                                ? 'Incorrect'
+                                : null}
+                        </span>
                     </label>
                 </React.Fragment>
             )
         });
 
         return (
-            <div className='quiz-questions' key={questionIndex}>
+            <fieldset className='quiz-questions' key={questionIndex}>
                 <legend>{decode(object.question)}</legend>
                 <div className="radio-group">
                     {answersPart}
                 </div>
-            </div>
+            </fieldset>
         );
     })
 
@@ -62,9 +71,9 @@ export default function Quiz({questionArray, shuffledAnswerArray, correctAnswerA
             const rawNumCorrectAnswers = correctAnswerArray.map((answer,index)=>{
                 const objProperty = `question${index}`
                 if (answers[objProperty] === answer){
-                    return true
+                    return true;
                 } else{
-                    return false
+                    return false;
                 }
             })
             const countCorrectAnswers = rawNumCorrectAnswers.filter(Boolean).length;
@@ -92,7 +101,7 @@ export default function Quiz({questionArray, shuffledAnswerArray, correctAnswerA
             <form onSubmit={handleSubmit} className={unCheckedBtnsForm}>
                 {renderArray}
                 <div className='check-answers-btn-div'>
-                    {countCorrectAnswers !== null ? <h3>You scored {countCorrectAnswers}/5 correct answers</h3> : undefined}
+                    {countCorrectAnswers !== null ? <h3 role="status">You scored {countCorrectAnswers}/{questionArray.length} correct answers</h3> : null}
                     <button className='check-answers-btn' type='submit'>{buttonText}</button>                   
                 </div>
             </form>
